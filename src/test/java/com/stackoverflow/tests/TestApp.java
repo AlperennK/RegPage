@@ -1,12 +1,8 @@
 package com.stackoverflow.tests;
 import com.stackoverflow.page.HomePage;
 import com.stackoverflow.driver.MyDriver;
-import com.stackoverflow.page.LoginPage;
-import com.stackoverflow.page.TopQuestions;
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import static org.junit.Assert.*;
 
 public class TestApp {
     WebDriver driver = MyDriver.getDriver();
@@ -17,10 +13,6 @@ public class TestApp {
         homePage=new HomePage(driver);
     }
 
-//    @Test
-//    public void iShouldSeeTitle(){
-//        Assert.assertEquals(homePage.getTitle(driver),"RingGo Cashless Parking Solution: Register for a RingGo account");
-//    }
     @Test
     public void iShouldReceiveErrorForInvalidNumber(){
         Assert.assertEquals(homePage.fillWithInvalidNumber(), "Phone number is invalid");
@@ -33,6 +25,14 @@ public class TestApp {
     @Test
     public void iShouldSeeCaptchaErr(){
         Assert.assertEquals(homePage.fillCorrectly(), "There is an error in the form. Please check for details below.");
+    }
+    @Test
+    public void iShouldSeeWrongPasswordFormatError(){
+        Assert.assertEquals(homePage.fillWrongPasswordFormat(), "The password does not meet the correct format.");
+    }
+    @Test
+    public void iShouldSeeCorrectPasswordGreenBox(){
+
     }
 
     @Test

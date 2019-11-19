@@ -3,8 +3,8 @@ Registration Page POM
 
 How to run
     
-    # Run a single test class.
-    $ mvn -Dtest=TestApp test
+    # Run tests.
+    $ mvn test
 
     # Run multiple test classes.
     $ mvn -Dtest=TestApp1,TestApp2 test

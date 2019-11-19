@@ -37,6 +37,9 @@ public class HomePage extends PageBase{
     @FindBy(className = "screennotifications")
     private WebElement captchaErr;
 
+    @FindBy(xpath = "//*[@id=\"header1\"]/ol/li[6]/div/div/span")
+    private WebElement wrongPasswordFormat;
+
     private WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
@@ -95,6 +98,19 @@ public class HomePage extends PageBase{
         memberPass.click();
         pause(2000);
         return emailPopBox.getText();
+    }
+    public String fillWrongPasswordFormat(){
+        memberPass.sendKeys("1a2w3e4r");
+        memberEmail.click();
+        pause(2000);
+        return wrongPasswordFormat.getText();
+
+    }
+    public String correctPassword(){
+        memberPass.sendKeys("1q2sAaB3");
+        memberEmail.click();
+        pause(2000);
+        return wrongPasswordFormat.getText();
     }
 
    public String fillCorrectly(){
