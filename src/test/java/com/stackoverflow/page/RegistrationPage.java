@@ -45,6 +45,9 @@ public class RegistrationPage extends PageBase{
     @FindBy(xpath = "//*[@id=\"header\"]/ul[1]/li[2]/a")
     private WebElement permitsButton;
 
+    @FindBy(xpath = "//*[@id=\"header\"]/ul[1]/li[3]/a")
+    private WebElement receiptsButton;
+
     private WebDriverWait wait;
 
     public RegistrationPage(WebDriver driver) {
@@ -132,6 +135,9 @@ public class RegistrationPage extends PageBase{
    }
    public void goToHomePageByCancelButton(){
         cancelButton.click();
+   }
+   public void goToReceiptsPage(){
+        receiptsButton.click();
    }
 
 

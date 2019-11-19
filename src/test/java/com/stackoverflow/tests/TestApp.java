@@ -40,6 +40,11 @@ public class TestApp {
         registrationPage.goPetmitsPage();
         Assert.assertEquals(driver.getCurrentUrl(), "http://myRingGoTest:W4t3Rf4lls@myrgo-preprod.ctt.co.uk/permits");
     }
+    @Test
+    public void iShouldGoReceiptsPage(){
+        registrationPage.goToReceiptsPage();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://myRingGoTest:W4t3Rf4lls@myrgo-preprod.ctt.co.uk/statements");
+    }
 
 
     @Test
