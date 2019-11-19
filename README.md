@@ -20,7 +20,7 @@ How to generate auto report
 Should be implemented:
 
     -Change pause method with ExpectedConditions
-    -Write features, add RunCuke class etc..
+    -Write features, add RunCuke etc..
     -Set scenario to wait user input to skip Captcha and continue to success page
     -Add Cross platform option for firefox and explorer. 
     

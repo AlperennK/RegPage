@@ -1,14 +1,15 @@
 package com.stackoverflow;
 
-import com.stackoverflow.page.HomePage;
+import com.stackoverflow.page.RegistrationPage;
 import com.stackoverflow.driver.MyDriver;
 import org.openqa.selenium.WebDriver;
 
 public class AccessToPage {
     public static void main(String[] args) {
-        HomePage homePage;
+        RegistrationPage registrationPage;
         WebDriver driver= MyDriver.getDriver();
-        homePage=new HomePage(driver);
-        homePage.correctPassword();
+        registrationPage =new RegistrationPage(driver);
+        registrationPage.goToHomePageByCancelButton();
+
     }
 }

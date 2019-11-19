@@ -1,43 +1,50 @@
 package com.stackoverflow.tests;
-import com.stackoverflow.page.HomePage;
+import com.stackoverflow.page.RegistrationPage;
 import com.stackoverflow.driver.MyDriver;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
 public class TestApp {
     WebDriver driver = MyDriver.getDriver();
-    HomePage homePage;
+    RegistrationPage registrationPage;
 
     @Before
     public void setUp(){
-        homePage=new HomePage(driver);
+        registrationPage =new RegistrationPage(driver);
     }
 
     @Test
     public void iShouldReceiveErrorForInvalidNumber(){
-        Assert.assertEquals(homePage.fillWithInvalidNumber(), "Phone number is invalid");
+        Assert.assertEquals(registrationPage.fillWithInvalidNumber(), "Phone number is invalid");
 
     }
     @Test
     public void iShouldReceiveAvailableToRegister(){
-        Assert.assertEquals(homePage.fillWithValidNumber(), "Number available to register");
+        Assert.assertEquals(registrationPage.fillWithValidNumber(), "Number available to register");
     }
     @Test
     public void iShouldSeeCaptchaErr(){
-        Assert.assertEquals(homePage.fillCorrectly(), "There is an error in the form. Please check for details below.");
+        Assert.assertEquals(registrationPage.fillCorrectly(), "There is an error in the form. Please check for details below.");
     }
     @Test
     public void iShouldSeeWrongPasswordFormatError(){
-        Assert.assertEquals(homePage.fillWrongPasswordFormat(), "The password does not meet the correct format.");
+        Assert.assertEquals(registrationPage.fillWrongPasswordFormat(), "The password does not meet the correct format.");
     }
     @Test
-    public void iShouldSeeCorrectPasswordGreenBox(){
-
+    public void iShouldGoBackHomePage(){
+        registrationPage.goToHomePageByCancelButton();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://myRingGoTest:W4t3Rf4lls@myrgo-preprod.ctt.co.uk/home");
     }
+    @Test
+    public void iShouldGoBackToPermits(){
+        registrationPage.goPetmitsPage();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://myRingGoTest:W4t3Rf4lls@myrgo-preprod.ctt.co.uk/permits");
+    }
+
 
     @Test
     public void iShouldSeeEmailInvalid(){
-        Assert.assertEquals(homePage.fillWrongEmail(), "Email is invalid");
+        Assert.assertEquals(registrationPage.fillWrongEmail(), "Email is invalid");
     }
 
 
