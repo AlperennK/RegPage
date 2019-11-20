@@ -12,6 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 public class RegistrationPage extends PageBase{
 
+    @FindBy(css= "#toggleMore")
+    private WebElement moreButton;
+
+    @FindBy(css = "#moremenu > li:nth-child(3) > ul > li:nth-child(1) > a")
+    private WebElement corporateButton;
+
     @FindBy(id="labyrinth_cancel")
     private WebElement cancelButton;
 
@@ -59,6 +65,10 @@ public class RegistrationPage extends PageBase{
     }
     public void goToReceiptsPage(){
         waitUntilClickable(receiptsButton).click();
+    }
+    public void getCorporatePage(){
+        waitUntilClickable(moreButton).click();
+        waitUntilClickable(corporateButton).click();
     }
 
     public void goPetmitsPage(){

@@ -14,6 +14,12 @@ public class TestApp {
     }
 
     @Test
+    public void iShouldGetDropDownOnTopMenu(){
+        registrationPage.getCorporatePage();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://corporate.myrgo-preprod.ctt.co.uk/");
+    }
+
+    @Test
     public void iShouldReceiveErrorForInvalidNumber(){
         Assert.assertEquals(registrationPage.fillWithInvalidNumber(), "Phone number is invalid");
 
