@@ -1,4 +1,5 @@
 package com.stackoverflow.tests;
+import com.stackoverflow.page.CorporateRegisterPage;
 import com.stackoverflow.page.RegistrationPage;
 import com.stackoverflow.driver.MyDriver;
 import org.junit.*;
@@ -7,10 +8,12 @@ import org.openqa.selenium.WebDriver;
 public class TestApp {
     WebDriver driver = MyDriver.getDriver();
     RegistrationPage registrationPage;
+    CorporateRegisterPage corporateRegisterPage;
 
     @Before
     public void setUp(){
         registrationPage =new RegistrationPage(driver);
+        corporateRegisterPage=new CorporateRegisterPage(driver);
     }
 
     @Test
@@ -28,6 +31,14 @@ public class TestApp {
     public void iShouldReceiveAvailableToRegister(){
         Assert.assertEquals(registrationPage.fillWithValidNumber(), "Number available to register");
     }
+    @Test
+    public void getToCorporateLoginPage(){
+        registrationPage.getCorporatePage();
+        corporateRegisterPage.getLoginPage();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://corporate.myrgo-preprod.ctt.co.uk/corplogin");
+
+    }
+
     @Test
     public void iShouldSeeCaptchaErr(){
         Assert.assertEquals(registrationPage.fillCorrectly(), "There is an error in the form. Please check for details below.");
