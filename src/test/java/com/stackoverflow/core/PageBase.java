@@ -28,6 +28,10 @@ public class PageBase {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         return element;
     }
+    public WebElement waitUntilTextChange(WebElement element, String strToBePresent){
+        wait.until(ExpectedConditions.textToBePresentInElement(element, strToBePresent));
+        return element;
+    }
 
     public WebElement scrollToElement(WebElement element) {
         JavascriptExecutor je = (JavascriptExecutor) driver;

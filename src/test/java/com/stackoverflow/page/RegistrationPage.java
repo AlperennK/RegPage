@@ -54,15 +54,15 @@ public class RegistrationPage extends PageBase{
         super(driver);
     }
 
-    public void fillForm(){
-        mobileNumberField.sendKeys("+69372968");
-        memberEmail.sendKeys("putrandom@email.here");
-        memberPass.sendKeys("putrandompasshere");
-        checkBox.click();
-        nextButton.click();
+    public void goToHomePageByCancelButton(){
+        waitUntilClickable(cancelButton).click();
     }
+    public void goToReceiptsPage(){
+        waitUntilClickable(receiptsButton).click();
+    }
+
     public void goPetmitsPage(){
-        permitsButton.click();
+        waitUntilClickable(permitsButton).click();
     }
     public void fillFormDontClick(){
         mobileNumberField.sendKeys("+69372968");
@@ -80,49 +80,36 @@ public class RegistrationPage extends PageBase{
    public String fillWithInvalidNumber(){
         mobileNumberField.sendKeys("xyz912312");
         memberEmail.click();
-        pause(2000);
-        //wait.until(ExpectedConditions.textToBePresentInElement(invalidBox, "Phone number is invalid\n"));
+        waitUntilTextChange(invalidBox, "Phone number is invalid");
         return invalidBox.getText();
    }
    public String fillWithValidNumber(){
         mobileNumberField.sendKeys("1231823121");
         memberEmail.click();
-        pause(2000);
+        waitUntilTextChange(invalidBox, "Number available to register");
         return invalidBox.getText();
    }
-    public void pause(Integer milliseconds){
-        try {
-            TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
     public String fillWrongEmail(){
         memberEmail.sendKeys("asdasdad");
         memberPass.click();
-        pause(2000);
-
+        waitUntilTextChange(emailPopBox, "Email is invalid");
         return emailPopBox.getText();
     }
     public String fillCorrectEmail(){
         memberEmail.sendKeys("alp@asz.zq");
         memberPass.click();
-        pause(2000);
+        waitUntilTextChange(emailPopBox, "There is an error in the form. Please check for details below.");
         return emailPopBox.getText();
     }
     public String fillWrongPasswordFormat(){
         memberPass.sendKeys("1a2w3e4r");
         memberEmail.click();
-        pause(2000);
+        waitUntilTextChange(wrongPasswordFormat, "The password does not meet the correct format.");
         return wrongPasswordFormat.getText();
 
     }
-    public String correctPassword(){
-        memberPass.sendKeys("1q2sAaB3");
-        memberEmail.click();
-        pause(2000);
-        return wrongPasswordFormat.getText();
-    }
+
 
    public String fillCorrectly(){
         mobileNumberField.sendKeys("905356920254");
@@ -130,14 +117,8 @@ public class RegistrationPage extends PageBase{
         memberPass.sendKeys("ThisPass1");
         checkBox.click();
         fillNextButton();
-        pause(3000);
+        waitUntilTextChange(captchaErr, "There is an error in the form. Please check for details below.");
         return captchaErr.getText();
-   }
-   public void goToHomePageByCancelButton(){
-        cancelButton.click();
-   }
-   public void goToReceiptsPage(){
-        receiptsButton.click();
    }
 
 
